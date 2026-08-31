@@ -1,0 +1,306 @@
+/* ==========================================================================
+   ShopSphere Authentication (Sign In & Sign Up) Styles
+   ========================================================================== */
+
+.stitch-auth-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #EDEDED;
+}
+
+.stitch-auth-main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: var(--max-width, 1440px);
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .stitch-auth-main {
+    flex-direction: row;
+  }
+}
+
+/* Left Column: Form */
+.stitch-auth-form-col {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem var(--margin-mobile, 20px);
+}
+
+@media (min-width: 768px) {
+  .stitch-auth-form-col {
+    width: 50%;
+    padding: 4rem var(--margin-desktop, 64px);
+  }
+}
+
+.stitch-auth-inner-box {
+  max-width: 440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.stitch-auth-brand {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: #000000;
+  margin-bottom: 2.5rem;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.stitch-auth-heading {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: #000000;
+  margin-bottom: 0.5rem;
+}
+
+.stitch-auth-subheading {
+  font-size: 16px;
+  color: #5d5f5f;
+  margin-bottom: 2rem;
+}
+
+/* Form inputs */
+.stitch-auth-field {
+  margin-bottom: 1.5rem;
+}
+
+.stitch-auth-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1a1c1c;
+  margin-bottom: 0.5rem;
+}
+
+.stitch-auth-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.stitch-auth-input-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.stitch-auth-input {
+  width: 100%;
+  height: 3.5rem;
+  padding: 0 1.5rem;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent;
+  font-size: 15px;
+  color: #1a1c1c;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.stitch-auth-input:focus {
+  border-color: #000000;
+}
+
+.stitch-auth-eye-btn {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #5d5f5f;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.stitch-auth-eye-btn:hover {
+  color: #000000;
+}
+
+.stitch-auth-submit-btn {
+  width: 100%;
+  height: 3.5rem;
+  border-radius: 9999px;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+.stitch-auth-submit-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+/* Divider */
+.stitch-auth-divider {
+  display: flex;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.stitch-auth-divider-line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #cfc4c5;
+}
+
+.stitch-auth-divider-text {
+  padding: 0 1rem;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #5d5f5f;
+}
+
+/* Social buttons */
+.stitch-auth-social-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.stitch-auth-social-btn {
+  width: 100%;
+  height: 3.5rem;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  color: #000000;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  transition: background-color 0.2s ease;
+}
+
+.stitch-auth-social-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.stitch-auth-footer-link {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 15px;
+  color: #5d5f5f;
+}
+
+.stitch-auth-footer-link a {
+  color: #000000;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* Right Column: Showcase Panel */
+.stitch-auth-showcase-col {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .stitch-auth-showcase-col {
+    display: flex;
+    width: 50%;
+    padding: 4rem var(--margin-desktop, 64px);
+    background-color: #e5e5e5;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+.stitch-showcase-bg-img {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuApAbhE8uW0iH4fyC50f2MUtJid6c37RkYgoleeYufbdU0SYSqlCFLdsaAPLYeH4j109rUl50LVK58a2k70f8JGLH1R2EeBuafYXHbjjAy0fvTFqigY4aYDQ_jj5f4joupiDRgJKAeWV2u0yTYQ-JokhKtmG7SwOZL_pWhpb1Xa_Xn62PTzxEZf9sX8VZgk4OBlw9VpbguhV1kP83kbcdT8h_GkXQxy9NpkzmUMzPP5zsM-ReesI6Ja');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+}
+
+.stitch-glass-showcase-card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 440px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  padding: 2.5rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stitch-showcase-card-title {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #000000;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.03em;
+}
+
+.stitch-showcase-card-desc {
+  font-size: 16px;
+  color: #5d5f5f;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.stitch-showcase-mockup-bar {
+  width: 100%;
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+.stitch-showcase-mock-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: #E5E5E5;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}

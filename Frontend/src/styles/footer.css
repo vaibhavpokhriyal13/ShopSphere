@@ -1,0 +1,153 @@
+/* ==========================================================================
+   ShopSphere Footer Styles & Layout
+   ========================================================================== */
+
+.stitch-footer {
+  width: 100%;
+  padding: 2.25rem var(--margin-desktop, 64px) 1.75rem;
+  margin-top: auto;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.stitch-footer-inner {
+  max-width: var(--max-width, 1440px);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.stitch-footer-brand-col {
+  width: 100%;
+  max-width: 380px;
+}
+
+.stitch-footer-logo-text {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: 0.65rem;
+}
+
+.stitch-footer-subtext {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #ffffff;
+  opacity: 0.7;
+  margin-bottom: 1.15rem;
+}
+
+.stitch-footer-newsletter-wrap {
+  display: flex;
+  max-width: 340px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.stitch-footer-email-input {
+  background-color: #f9f9f9;
+  color: #000000;
+  font-size: 13px;
+  padding: 0.55rem 1rem;
+  border: none;
+  outline: none;
+  width: 100%;
+  transition: background-color var(--dur-fast) var(--ease-out-quad);
+}
+
+.stitch-footer-email-input:focus {
+  background-color: #ffffff;
+}
+
+.stitch-footer-subscribe-btn {
+  background-color: #e2e2e2;
+  color: #000000;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.55rem 1.25rem;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--dur-fast) var(--ease-out-quad), transform var(--dur-fast) var(--ease-spring);
+}
+
+.stitch-footer-subscribe-btn:hover {
+  background-color: #ffffff;
+}
+
+.stitch-footer-subscribe-btn:active {
+  transform: scale(0.96);
+}
+
+/* Links Columns */
+.stitch-footer-links-group {
+  display: flex;
+  gap: 2.5rem 3.5rem;
+  flex-wrap: wrap;
+}
+
+.stitch-footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.stitch-footer-col-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  opacity: 0.5;
+  margin-bottom: 0.25rem;
+}
+
+.stitch-footer-link {
+  font-size: 13px;
+  color: #ffffff;
+  opacity: 0.75;
+  text-decoration: none;
+  transition: opacity var(--dur-fast) var(--ease-out-quad), transform var(--dur-fast) var(--ease-spring);
+  display: inline-block;
+}
+
+.stitch-footer-link:hover {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+/* Bottom Bar */
+.stitch-footer-bottom {
+  max-width: var(--max-width, 1440px);
+  margin: 2rem auto 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: left;
+}
+
+.stitch-footer-copy {
+  font-size: 12px;
+  color: #ffffff;
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .stitch-footer {
+    padding: 2rem var(--margin-mobile, 20px) 5.5rem;
+  }
+  .stitch-footer-links-group {
+    gap: 1.75rem 2.25rem;
+  }
+  .stitch-footer-bottom {
+    margin: 1.75rem auto 0;
+    padding-top: 1rem;
+    text-align: center;
+  }
+}

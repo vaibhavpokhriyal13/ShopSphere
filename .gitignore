@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+Backend/node_modules/
+Frontend/node_modules/
+
+# Production Builds
+dist/
+Frontend/dist/
+Frontend/dist-ssr/
+
+# Environment Variables & Secrets (Do NOT commit)
+.env
+.env.*
+!.env.example
+Backend/.env
+Backend/.env.*
+Frontend/.env
+Frontend/.env.*
+
+# Uploads & Temporary files
+uploads/
+*.log
+.DS_Store
+.vscode/
+.idea/

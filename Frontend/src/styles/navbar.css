@@ -1,0 +1,712 @@
+/* ==========================================================================
+   ShopSphere Navigation, Dropdowns & Side Drawer Styles
+   ========================================================================== */
+
+.stitch-header-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  width: 100%;
+  background-color: var(--surface, #f9f9f9);
+  transition: box-shadow var(--dur-norm) var(--ease-out-quad), border-color var(--dur-norm) var(--ease-out-quad);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.stitch-header-wrapper.scrolled {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Three-Region Balanced Header Layout */
+.stitch-header {
+  width: 100%;
+  max-width: var(--max-width, 1440px);
+  margin: 0 auto;
+  padding: 1rem var(--margin-desktop, 64px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+/* 1. LEFT: Brand Area */
+.stitch-brand-area {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.stitch-menu-btn {
+  background: none;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--dur-fast) var(--ease-out-quad), transform var(--dur-fast) var(--ease-spring);
+}
+
+.stitch-menu-btn:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+  transform: scale(1.05);
+}
+
+.stitch-menu-btn:active {
+  transform: scale(0.92);
+}
+
+.stitch-brand-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: #000000;
+  text-decoration: none;
+  transition: opacity var(--dur-fast) var(--ease-out-quad);
+}
+
+.stitch-brand-title:hover {
+  opacity: 0.85;
+}
+
+/* 2. CENTER: Navigation Links */
+.stitch-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.stitch-nav-item {
+  position: relative;
+}
+
+.stitch-nav-link {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #5d5f5f;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0.5rem 0.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color var(--dur-fast) var(--ease-out-quad);
+}
+
+.stitch-nav-link:hover,
+.stitch-nav-link.active {
+  color: #000000;
+}
+
+.stitch-nav-arrow {
+  transition: transform var(--dur-fast) var(--ease-spring);
+}
+
+.stitch-nav-link.active .stitch-nav-arrow {
+  transform: rotate(180deg);
+}
+
+/* 3. RIGHT: Actions (Search Icon / Input, Account, Bag) */
+.stitch-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  flex-shrink: 0;
+}
+
+.stitch-action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #000000;
+  text-decoration: none;
+  padding: 6px 8px;
+  border-radius: 8px;
+  transition: opacity var(--dur-fast) var(--ease-out-quad), background-color var(--dur-fast) var(--ease-out-quad);
+}
+
+.stitch-action-link:hover {
+  opacity: 0.8;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.stitch-cart-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #000000;
+  text-decoration: none;
+  padding: 0.65rem 1.15rem;
+  border-radius: 9999px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+  transition: transform var(--dur-fast) var(--ease-spring), opacity var(--dur-fast) var(--ease-out-quad);
+}
+
+.stitch-cart-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.stitch-cart-btn:active {
+  transform: scale(0.96);
+}
+
+.stitch-cart-count-bump {
+  animation: stitchCountBump 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes stitchCountBump {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); color: #22c55e; }
+  100% { transform: scale(1); }
+}
+
+/* ==========================================================================
+   Expandable Search Micro-Interaction
+   ========================================================================== */
+
+.stitch-expandable-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.stitch-search-trigger-btn {
+  background: none;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--dur-fast) var(--ease-out-quad), transform var(--dur-fast) var(--ease-spring);
+}
+
+.stitch-search-trigger-btn:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+  transform: scale(1.05);
+}
+
+.stitch-search-trigger-btn:active {
+  transform: scale(0.92);
+}
+
+.stitch-expandable-search-form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 280px;
+  animation: stitchSearchExpand 220ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes stitchSearchExpand {
+  from {
+    width: 60px;
+    opacity: 0;
+  }
+  to {
+    width: 280px;
+    opacity: 1;
+  }
+}
+
+.stitch-search-field-icon {
+  position: absolute;
+  left: 12px;
+  color: #8c8e8e;
+  pointer-events: none;
+}
+
+.stitch-expandable-search-input {
+  width: 100%;
+  height: 38px;
+  padding: 0 2rem 0 2.25rem;
+  font-size: 13px;
+  font-family: inherit;
+  color: #000000;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 9999px;
+  outline: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: border-color var(--dur-fast) ease, box-shadow var(--dur-fast) ease;
+}
+
+.stitch-expandable-search-input:focus {
+  border-color: #000000;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.stitch-search-field-btn {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  color: #8c8e8e;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--dur-fast) ease, background-color var(--dur-fast) ease;
+}
+
+.stitch-search-field-btn:hover {
+  color: #000000;
+  background: #f4f4f5;
+}
+
+/* Search Suggestions Dropdown */
+.stitch-search-suggestions-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 320px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 60;
+  animation: stitchDropdownMenu 160ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.stitch-suggestions-header {
+  padding: 0.65rem 1rem 0.4rem;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8c8e8e;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.stitch-suggestion-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.65rem 1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color var(--dur-fast) ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.stitch-suggestion-item:hover,
+.stitch-suggestion-item:focus {
+  background-color: #f9fafb;
+}
+
+.stitch-suggestion-thumb {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  object-fit: cover;
+  background: #f4f4f5;
+  flex-shrink: 0;
+}
+
+.stitch-suggestion-info {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.stitch-suggestion-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0 0 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stitch-suggestion-meta {
+  font-size: 11px;
+  color: #5d5f5f;
+}
+
+.stitch-suggestion-price {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #000000;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.stitch-suggestions-categories {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding: 0.65rem 1rem;
+  background: #fafafa;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.stitch-suggestion-category-pill {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #000000;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  transition: all var(--dur-fast) ease;
+}
+
+.stitch-suggestion-category-pill:hover {
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.stitch-suggestions-footer-btn {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: #f4f4f5;
+  border: none;
+  font-size: 12px;
+  font-weight: 700;
+  color: #000000;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  transition: background-color var(--dur-fast) ease;
+}
+
+.stitch-suggestions-footer-btn:hover {
+  background: #ebebeb;
+}
+
+/* Mobile Search Overlay Bar */
+.stitch-mobile-search-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ffffff;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 var(--margin-mobile, 20px);
+  animation: stitchFadeIn 160ms ease forwards;
+}
+
+.stitch-mobile-search-overlay .stitch-expandable-search-form {
+  flex: 1;
+  width: 100%;
+}
+
+.stitch-mobile-search-overlay .stitch-search-suggestions-dropdown {
+  position: fixed;
+  top: 60px;
+  left: 16px;
+  right: 16px;
+  width: auto;
+}
+
+/* ==========================================================================
+   Dropdown Menus
+   ========================================================================== */
+
+.stitch-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 1rem;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.09);
+  padding: 0.75rem;
+  min-width: 240px;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  animation: stitchDropdownMenu 180ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes stitchDropdownMenu {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.stitch-dropdown-link {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.65rem;
+  text-decoration: none;
+  color: #000000;
+  transition: background-color var(--dur-fast) var(--ease-out-quad);
+}
+
+.stitch-dropdown-link:hover {
+  background-color: #f4f4f5;
+}
+
+.stitch-dropdown-title {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.stitch-dropdown-desc {
+  font-size: 11.5px;
+  color: #5d5f5f;
+  margin-top: 1px;
+}
+
+/* ==========================================================================
+   Side Drawer & Backdrop
+   ========================================================================== */
+
+.stitch-sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  z-index: 90;
+  animation: stitchFadeIn var(--dur-fast) var(--ease-out-quad) forwards;
+}
+
+.stitch-sidebar-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 320px;
+  max-width: 85vw;
+  background-color: #ffffff;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 8px 0 32px rgba(0, 0, 0, 0.12);
+  transform: translateX(-100%);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stitch-sidebar-drawer.open {
+  transform: translateX(0);
+}
+
+.stitch-sidebar-header {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.stitch-sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stitch-sidebar-user-card {
+  padding: 1.25rem 1.5rem;
+  background-color: #f9fafb;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stitch-sidebar-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #000000;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stitch-sidebar-greeting {
+  font-size: 14px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.stitch-sidebar-subgreeting {
+  font-size: 11px;
+  color: #5d5f5f;
+}
+
+.stitch-sidebar-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 0;
+}
+
+.stitch-sidebar-section {
+  padding: 0.5rem 1.25rem 1rem 1.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.stitch-sidebar-section-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8c8e8e;
+  margin-bottom: 0.75rem;
+  padding-left: 0.5rem;
+}
+
+.stitch-sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.65rem 0.75rem;
+  border-radius: 10px;
+  color: #18181b;
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: background-color var(--dur-fast) ease;
+}
+
+.stitch-sidebar-link:hover,
+.stitch-sidebar-link.active {
+  background-color: #f4f4f5;
+  color: #000000;
+}
+
+.stitch-sidebar-logout-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.65rem 0.75rem;
+  border-radius: 10px;
+  color: #b91c1c;
+  background: none;
+  border: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color var(--dur-fast) ease;
+}
+
+.stitch-sidebar-logout-btn:hover {
+  background-color: #fef2f2;
+}
+
+.stitch-sidebar-auth-btn {
+  display: block;
+  text-align: center;
+  padding: 0.75rem;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.stitch-sidebar-auth-btn.primary {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.stitch-sidebar-auth-btn.secondary {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile Bottom Nav */
+.stitch-bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 0.5rem 1rem;
+  z-index: 40;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.stitch-bottom-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: #8c8e8e;
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.stitch-bottom-item.active {
+  color: #000000;
+}
+
+/* Responsive Rules */
+@media (max-width: 1024px) {
+  .stitch-nav {
+    gap: 1.25rem;
+  }
+  .stitch-expandable-search-form {
+    width: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .stitch-header {
+    padding: 0.85rem var(--margin-mobile, 20px);
+  }
+  .stitch-nav {
+    display: none;
+  }
+  .stitch-action-text {
+    display: none;
+  }
+  .stitch-bottom-nav {
+    display: flex;
+  }
+}

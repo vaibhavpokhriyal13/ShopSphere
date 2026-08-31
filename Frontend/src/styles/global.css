@@ -1,0 +1,124 @@
+/* ==========================================================================
+   ShopSphere Design Tokens & Global Styles
+   ========================================================================== */
+
+:root {
+  --primary: #000000;
+  --on-primary: #ffffff;
+  --secondary: #5d5f5f;
+  --background: #EDEDED;
+  --surface: #f9f9f9;
+  --surface-container-high: #e8e8e8;
+  --surface-variant: #e2e2e2;
+  --max-width: 1440px;
+  --margin-desktop: 64px;
+  --margin-mobile: 20px;
+  --gutter: 24px;
+
+  /* Global Animation & Motion Tokens */
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quad: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 160ms;
+  --dur-norm: 260ms;
+  --dur-slow: 380ms;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+body {
+  background-color: var(--background);
+  color: #1a1c1c;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-out-quad), opacity var(--dur-fast) var(--ease-out-quad);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  user-select: none;
+  transition: transform var(--dur-fast) var(--ease-spring), opacity var(--dur-fast) var(--ease-out-quad), background-color var(--dur-fast) var(--ease-out-quad);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* Subtle Page Entrance Animation */
+.stitch-page-enter {
+  animation: stitchPageFadeIn var(--dur-norm) var(--ease-spring) forwards;
+}
+
+@keyframes stitchPageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reusable Stagger Keyframe */
+@keyframes stitchElementEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Global Icon Animation Helper */
+.material-symbols-outlined {
+  transition: transform var(--dur-fast) var(--ease-spring), color var(--dur-fast) var(--ease-out-quad);
+}
+
+.container-stitch {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-left: var(--margin-desktop);
+  padding-right: var(--margin-desktop);
+}
+
+@media (max-width: 768px) {
+  .container-stitch {
+    padding-left: var(--margin-mobile);
+    padding-right: var(--margin-mobile);
+  }
+}
+
+/* Accessibility: Respect Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,296 @@
+/* ==========================================================================
+   ShopSphere Checkout Page Styles
+   ========================================================================== */
+
+.stitch-checkout-container {
+  width: 100%;
+  max-width: var(--max-width, 1440px);
+  margin: 0 auto;
+  padding: 3rem var(--margin-desktop, 64px) 6rem;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .stitch-checkout-container {
+    padding: 1.5rem var(--margin-mobile, 20px) 4rem;
+  }
+}
+
+.stitch-checkout-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .stitch-checkout-grid {
+    grid-template-columns: 1.8fr 1fr;
+  }
+}
+
+/* Form Sections */
+.stitch-checkout-section {
+  margin-bottom: 3rem;
+}
+
+.stitch-checkout-section-title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #000000;
+  margin-bottom: 1.75rem;
+}
+
+/* Floating Label Inputs */
+.stitch-input-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.stitch-input-full {
+  grid-column: span 2;
+}
+
+@media (max-width: 640px) {
+  .stitch-input-grid {
+    grid-template-columns: 1fr;
+  }
+  .stitch-input-full {
+    grid-column: span 1;
+  }
+}
+
+.stitch-floating-input {
+  position: relative;
+  background: #f9f9f9;
+  border-radius: 9999px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.stitch-floating-input input,
+.stitch-floating-input select {
+  width: 100%;
+  background: transparent;
+  border-radius: 9999px;
+  padding: 24px 24px 8px 24px;
+  border: 1px solid transparent;
+  font-size: 15px;
+  color: #000000;
+  outline: none;
+  transition: border-color 0.2s ease;
+  font-family: inherit;
+}
+
+.stitch-floating-input input:focus,
+.stitch-floating-input select:focus {
+  border-color: #000000;
+}
+
+.stitch-floating-input label {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.2s ease;
+  pointer-events: none;
+  color: #5d5f5f;
+  font-size: 15px;
+}
+
+.stitch-floating-input input:focus + label,
+.stitch-floating-input input:not(:placeholder-shown) + label,
+.stitch-floating-input select + label {
+  top: 10px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  color: #000000;
+}
+
+/* Payment Methods */
+.stitch-payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.stitch-payment-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background: #f9f9f9;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.stitch-payment-option.selected {
+  border-color: #000000;
+}
+
+.stitch-payment-option-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stitch-payment-radio {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: #000000;
+  cursor: pointer;
+}
+
+.stitch-payment-name {
+  font-size: 17px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.stitch-cc-nested-fields {
+  margin-left: 2.25rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+/* Order Summary Box */
+.stitch-checkout-summary-box {
+  background: #f9f9f9;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 130px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.stitch-summary-heading {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #000000;
+}
+
+.stitch-mini-cart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(207, 196, 197, 0.4);
+  padding-bottom: 1.5rem;
+}
+
+.stitch-mini-cart-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stitch-mini-cart-thumb {
+  width: 4rem;
+  height: 4rem;
+  background-color: #E5E5E5;
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.stitch-mini-cart-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+}
+
+.stitch-mini-cart-info {
+  flex-grow: 1;
+}
+
+.stitch-mini-cart-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.stitch-mini-cart-qty {
+  font-size: 13px;
+  color: #5d5f5f;
+  opacity: 0.7;
+}
+
+.stitch-mini-cart-price {
+  font-size: 15px;
+  font-weight: 700;
+  color: #000000;
+}
+
+/* Totals List */
+.stitch-checkout-totals {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-bottom: 1px solid rgba(207, 196, 197, 0.4);
+  padding-bottom: 1.5rem;
+}
+
+.stitch-checkout-total-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  color: #5d5f5f;
+}
+
+.stitch-checkout-grand-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.stitch-complete-btn {
+  width: 100%;
+  padding: 1.25rem 2rem;
+  background: #000000;
+  color: #ffffff;
+  border-radius: 9999px;
+  border: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.stitch-complete-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+/* Confirmation Modal / Screen */
+.stitch-success-card {
+  text-align: center;
+  background: #f9f9f9;
+  border-radius: 1rem;
+  padding: 4rem 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.stitch-success-icon {
+  font-size: 64px;
+  color: #10b981;
+  margin-bottom: 1.5rem;
+}
