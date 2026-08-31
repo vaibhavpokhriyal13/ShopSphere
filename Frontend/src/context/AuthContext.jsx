@@ -102,18 +102,6 @@ export const AuthProvider = ({ children }) => {
     }
   }
 
-  const loginWithGoogle = () => {
-    const mockUser = {
-      id: "usr_google_1",
-      name: "Vaibhav Pokhriyal",
-      email: "vaibhav@shopsphere.in",
-      role: "user"
-    }
-    const mockToken = "jwt_google_token_" + Date.now()
-    dispatch(setCredentialsAction({ user: mockUser, token: mockToken }))
-    return mockUser
-  }
-
   const logout = async () => {
     await authAPI.logout()
     dispatch(logoutAction())
@@ -132,7 +120,6 @@ export const AuthProvider = ({ children }) => {
         verifyEmail,
         resendOTP,
         login,
-        loginWithGoogle,
         logout
       }}
     >

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { Link, useNavigate, useSearchParams } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext"
+import { useToast } from "../../context/ToastContext"
 import "../../styles/auth.css"
 
 const Login = () => {
@@ -8,7 +9,8 @@ const Login = () => {
   const [searchParams] = useSearchParams()
   const redirectUrl = searchParams.get("redirect") || "/"
 
-  const { login, loginWithGoogle, verifyEmail, resendOTP, isAuthenticated, user, loading, error } = useAuth()
+  const { login, verifyEmail, resendOTP, isAuthenticated, user, loading, error } = useAuth()
+  const { showToast } = useToast()
 
   const [formData, setFormData] = useState({
     email: "",
@@ -87,13 +89,7 @@ const Login = () => {
   }
 
   const handleGoogleLogin = () => {
-    const loggedUser = loginWithGoogle()
-    const target = redirectUrl && redirectUrl !== "/login" && redirectUrl !== "/register" ? redirectUrl : "/"
-    if (loggedUser.role === "admin" && target === "/") {
-      navigate("/admin", { replace: true })
-    } else {
-      navigate(target, { replace: true })
-    }
+    showToast("Feature Coming Soon", "Google Sign-In is coming soon! Please sign in using your email & password.")
   }
 
   return (

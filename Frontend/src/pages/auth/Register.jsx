@@ -1,11 +1,13 @@
 import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext"
+import { useToast } from "../../context/ToastContext"
 import "../../styles/auth.css"
 
 const Register = () => {
   const navigate = useNavigate()
-  const { register, verifyEmail, loginWithGoogle, loading, error } = useAuth()
+  const { register, verifyEmail, loading, error } = useAuth()
+  const { showToast } = useToast()
 
   const [step, setStep] = useState(1) // 1 = Form, 2 = OTP Verification
   const [formData, setFormData] = useState({
@@ -46,8 +48,7 @@ const Register = () => {
   }
 
   const handleGoogleLogin = () => {
-    loginWithGoogle()
-    navigate("/", { replace: true })
+    showToast("Feature Coming Soon", "Google Sign-In is coming soon! Please register using your email & password.")
   }
 
   return (

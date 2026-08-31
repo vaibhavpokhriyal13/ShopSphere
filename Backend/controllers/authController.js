@@ -200,6 +200,53 @@ const loginUser = async (req, res) => {
     }
 }
 
+// Google Sign-In (Creates or logs in verified user with real JWT)
+const googleAuth = async (req, res) => {
+    try {
+        const { email, name, googleId, picture } = req.body || {};
+        if (!email) {
+            return res.status(400).json({ message: "Google email is required" });
+        }
+
+        const normalizedEmail = email.toLowerCase().trim();
+        let user = await User.findOne({ email: normalizedEmail });
+
+        if (!user) {
+            const randomPassword = Math.random().toString(36).slice(-12) + "Gg1!";
+            const salt = await bcrypt.genSalt(10);
+            const hashedPassword = await bcrypt.hash(randomPassword, salt);
+
+            user = await User.create({
+                name: name || normalizedEmail.split("@")[0],
+                email: normalizedEmail,
+                password: hashedPassword,
+                isVerified: true,
+                role: "user"
+            });
+        } else if (!user.isVerified) {
+            user.isVerified = true;
+            await user.save();
+        }
+
+        const token = generateToken(user._id);
+
+        res.status(200).json({
+            message: "Google sign-in successful",
+            token,
+            user: {
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                role: user.role,
+                isVerified: user.isVerified
+            }
+        });
+    } catch (error) {
+        console.error("Google auth error:", error);
+        res.status(500).json({ message: "Failed to authenticate with Google" });
+    }
+};
+
 // Logout User
 const logoutUser = async (req, res) => {
     res.status(200).json({ message: "Logout endpoint" });
@@ -222,5 +269,6 @@ module.exports = {
     resendOTP,
     loginUser,
     logoutUser,
-    getUsers
+    getUsers,
+    googleAuth
 };
