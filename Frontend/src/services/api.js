@@ -3,9 +3,9 @@
 // Base URL points to the Express Backend via Vite proxy (/api)
 // ==========================================================================
 
-import { mockProducts } from "../data/products"
-
-const API_BASE_URL = import.meta.env.VITE_API_URL || "/api"
+// Normalize API Base URL (safely appends /api if omitted)
+const rawUrl = (import.meta.env.VITE_API_URL || "/api").trim().replace(/\/+$/, "")
+const API_BASE_URL = rawUrl === "/api" ? "/api" : (rawUrl.endsWith("/api") ? rawUrl : `${rawUrl}/api`)
 
 // Helper to get auth headers with JWT token
 const getAuthHeaders = () => {
