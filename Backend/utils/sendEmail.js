@@ -1,10 +1,10 @@
 const nodemailer = require("nodemailer");
 
-const sendEmail = async (to, subject, text) => {
+const sendEmail = async (to, subject, text, html) => {
     try {
         if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-            console.log(`[Email Mock] To: ${to} | Subject: ${subject} | Text: ${text}`);
-            return;
+            console.log(`[Email Service - Simulated]\nTo: ${to}\nSubject: ${subject}\nText: ${text}`);
+            return { success: true, simulated: true };
         }
 
         const transporter = nodemailer.createTransport({
@@ -14,9 +14,20 @@ const sendEmail = async (to, subject, text) => {
                 pass: process.env.EMAIL_PASS
             }
         });
-        await transporter.sendMail({ to, subject, text });
+
+        const info = await transporter.sendMail({
+            from: `"ShopSphere" <${process.env.EMAIL_USER}>`,
+            to,
+            subject,
+            text,
+            html: html || undefined
+        });
+
+        console.log(`[Email Sent] Message ID: ${info.messageId} to ${to}`);
+        return { success: true, messageId: info.messageId };
     } catch (error) {
-        console.error("Error sending email:", error.message || error);
+        console.error("Nodemailer error sending email:", error.message || error);
+        return { success: false, error: error.message };
     }
 };
 

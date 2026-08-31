@@ -77,10 +77,13 @@ const createOrder = async (req, res) => {
 
         if (req.user && req.user.email) {
             try {
+                const itemListText = sanitizedItems.map(it => `• ${it.name} (Qty: ${it.quantity}) — ₹${(it.price * it.quantity).toLocaleString("en-IN")}`).join("\n");
+                const emailContent = `Hello ${req.user?.name || "Customer"},\n\nThank you for your purchase with ShopSphere!\nYour order #${newOrder._id.toString().slice(-8).toUpperCase()} has been confirmed.\n\nORDER SUMMARY:\n${itemListText}\n\nTotal Paid: ₹${Number(newOrder.totalAmount).toLocaleString("en-IN")}\nPayment Method: ${newOrder.paymentMethod}\nPayment Status: ${newOrder.paymentStatus.toUpperCase()}\nShipping To: ${orderAddress}, ${orderCity}, ${orderState} - ${orderPin}\nCarrier: Bluedart Express Air (Pan-India)\n\nYou can track your shipment anytime through our AI Concierge or your profile page.\n\nWarm regards,\nThe ShopSphere Team`;
+
                 await sendEmail(
                     req.user.email,
-                    "Order Confirmation - ShopSphere",
-                    `Hello ${req.user?.name || "Customer"},\n\nYour order #${newOrder._id} has been placed successfully!\nTotal Amount: ₹${newOrder.totalAmount}\nPayment Method: ${newOrder.paymentMethod}\nStatus: ${newOrder.paymentStatus}\n\nThank you for shopping with ShopSphere!`
+                    `Order Confirmed #${newOrder._id.toString().slice(-8).toUpperCase()} - ShopSphere`,
+                    emailContent
                 );
             } catch (mailErr) {
                 console.warn("Email notification skipped:", mailErr.message);

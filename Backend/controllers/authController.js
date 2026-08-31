@@ -113,6 +113,14 @@ const verifyEmail = async (req, res) => {
         user.otpExpires = undefined;
         await user.save();
 
+        // Send Welcome Email
+        try {
+            const welcomeText = `Welcome to ShopSphere, ${user.name}!\n\nYour email has been verified and your account is now fully active.\nExplore our curated collections of travel bags, noise-canceling audio gear, and lifestyle objects.\n\nHappy Shopping,\nThe ShopSphere Team`;
+            await sendEmail(user.email, "Welcome to ShopSphere — Your Account is Ready", welcomeText);
+        } catch (mailErr) {
+            console.warn("Welcome email skipped:", mailErr.message);
+        }
+
         res.status(200).json({
             message: "Email verified successfully",
             user: {
