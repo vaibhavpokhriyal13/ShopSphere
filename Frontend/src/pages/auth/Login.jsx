@@ -6,7 +6,7 @@ import "../../styles/auth.css"
 const Login = () => {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
-  const redirectUrl = searchParams.get("redirect") || "/profile"
+  const redirectUrl = searchParams.get("redirect") || "/"
 
   const { login, loginWithGoogle, verifyEmail, resendOTP, isAuthenticated, user, loading, error } = useAuth()
 
@@ -25,10 +25,11 @@ const Login = () => {
   // If already authenticated, redirect immediately
   useEffect(() => {
     if (isAuthenticated && user) {
-      if (user.role === "admin" && redirectUrl === "/profile") {
-        navigate("/admin")
+      const target = redirectUrl && redirectUrl !== "/login" && redirectUrl !== "/register" ? redirectUrl : "/"
+      if (user.role === "admin" && target === "/") {
+        navigate("/admin", { replace: true })
       } else {
-        navigate(redirectUrl)
+        navigate(target, { replace: true })
       }
     }
   }, [isAuthenticated, user, navigate, redirectUrl])
@@ -43,10 +44,11 @@ const Login = () => {
     setOtpMsg("")
     try {
       const loggedUser = await login(formData)
-      if (loggedUser.role === "admin" && redirectUrl === "/profile") {
-        navigate("/admin")
+      const target = redirectUrl && redirectUrl !== "/login" && redirectUrl !== "/register" ? redirectUrl : "/"
+      if (loggedUser.role === "admin" && target === "/") {
+        navigate("/admin", { replace: true })
       } else {
-        navigate(redirectUrl)
+        navigate(target, { replace: true })
       }
     } catch (err) {
       const errMsg = err.message || "Invalid email or password"
@@ -63,10 +65,11 @@ const Login = () => {
     setOtpMsg("")
     try {
       const loggedUser = await verifyEmail(formData.email, otpCode)
-      if (loggedUser.role === "admin" && redirectUrl === "/profile") {
-        navigate("/admin")
+      const target = redirectUrl && redirectUrl !== "/login" && redirectUrl !== "/register" ? redirectUrl : "/"
+      if (loggedUser.role === "admin" && target === "/") {
+        navigate("/admin", { replace: true })
       } else {
-        navigate(redirectUrl)
+        navigate(target, { replace: true })
       }
     } catch (err) {
       setLocalError(err.message || "Invalid OTP code")
@@ -85,10 +88,11 @@ const Login = () => {
 
   const handleGoogleLogin = () => {
     const loggedUser = loginWithGoogle()
-    if (loggedUser.role === "admin" && redirectUrl === "/profile") {
-      navigate("/admin")
+    const target = redirectUrl && redirectUrl !== "/login" && redirectUrl !== "/register" ? redirectUrl : "/"
+    if (loggedUser.role === "admin" && target === "/") {
+      navigate("/admin", { replace: true })
     } else {
-      navigate(redirectUrl)
+      navigate(target, { replace: true })
     }
   }
 

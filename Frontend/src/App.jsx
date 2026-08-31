@@ -34,6 +34,8 @@ import Register from "./pages/auth/Register"
 import AdminDashboard from "./pages/admin/AdminDashboard"
 import NotFound from "./pages/misc/NotFound"
 
+import ProtectedRoute from "./components/common/ProtectedRoute"
+
 import "./styles/global.css"
 
 const AppContent = () => {
@@ -45,33 +47,35 @@ const AppContent = () => {
       {!isAuthPage && <Navbar />}
       <div key={location.pathname} className="stitch-page-enter" style={{ flex: 1, display: "flex", flexDirection: "column" }}>
         <Routes>
-          {/* Navigation */}
-          <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/collections" element={<Collections />} />
-          <Route path="/explore" element={<Explore />} />
-          <Route path="/recently-viewed" element={<RecentlyViewed />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-
-          {/* User Account */}
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/account" element={<Profile />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/wishlist" element={<Wishlist />} />
-          <Route path="/addresses" element={<Addresses />} />
-          <Route path="/payment-methods" element={<PaymentMethods />} />
-          <Route path="/settings" element={<Settings />} />
-
-          {/* Support */}
-          <Route path="/help" element={<HelpSupport />} />
-          <Route path="/contact" element={<Contact />} />
-
-          {/* Auth & Admin */}
+          {/* Public Auth Routes */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/admin" element={<AdminDashboard />} />
+
+          {/* Protected Navigation */}
+          <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+          <Route path="/shop" element={<ProtectedRoute><Shop /></ProtectedRoute>} />
+          <Route path="/collections" element={<ProtectedRoute><Collections /></ProtectedRoute>} />
+          <Route path="/explore" element={<ProtectedRoute><Explore /></ProtectedRoute>} />
+          <Route path="/recently-viewed" element={<ProtectedRoute><RecentlyViewed /></ProtectedRoute>} />
+          <Route path="/product/:id" element={<ProtectedRoute><ProductDetail /></ProtectedRoute>} />
+          <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
+          <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
+
+          {/* User Account */}
+          <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/account" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/orders" element={<ProtectedRoute><Orders /></ProtectedRoute>} />
+          <Route path="/wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
+          <Route path="/addresses" element={<ProtectedRoute><Addresses /></ProtectedRoute>} />
+          <Route path="/payment-methods" element={<ProtectedRoute><PaymentMethods /></ProtectedRoute>} />
+          <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
+
+          {/* Support */}
+          <Route path="/help" element={<ProtectedRoute><HelpSupport /></ProtectedRoute>} />
+          <Route path="/contact" element={<ProtectedRoute><Contact /></ProtectedRoute>} />
+
+          {/* Admin */}
+          <Route path="/admin" element={<ProtectedRoute requireAdmin><AdminDashboard /></ProtectedRoute>} />
 
           {/* 404 */}
           <Route path="*" element={<NotFound />} />

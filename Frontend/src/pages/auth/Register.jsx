@@ -5,7 +5,7 @@ import "../../styles/auth.css"
 
 const Register = () => {
   const navigate = useNavigate()
-  const { register, verifyEmail, loading, error } = useAuth()
+  const { register, verifyEmail, loginWithGoogle, loading, error } = useAuth()
 
   const [step, setStep] = useState(1) // 1 = Form, 2 = OTP Verification
   const [formData, setFormData] = useState({
@@ -39,10 +39,15 @@ const Register = () => {
     setLocalMsg("")
     try {
       await verifyEmail(formData.email, otp)
-      navigate("/profile")
+      navigate("/", { replace: true })
     } catch (err) {
       setLocalMsg(err.message || "Invalid OTP verification code")
     }
+  }
+
+  const handleGoogleLogin = () => {
+    loginWithGoogle()
+    navigate("/", { replace: true })
   }
 
   return (
@@ -155,7 +160,7 @@ const Register = () => {
                   <button
                     type="button"
                     className="stitch-auth-social-btn"
-                    onClick={() => navigate("/profile")}
+                    onClick={handleGoogleLogin}
                   >
                     <svg className="w-5 h-5" style={{ width: "20px", height: "20px" }} viewBox="0 0 24 24">
                       <path
