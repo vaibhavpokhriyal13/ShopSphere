@@ -1,5 +1,8 @@
 # 🛍️ ShopSphere — Modern Luxury E-Commerce Platform
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://frontend-liart-eight-37.vercel.app/)
+[![API Status](https://img.shields.io/badge/Backend_API-Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://shopsphere-3xp5.onrender.com/)
+
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)](https://reactjs.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-Express-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?logo=mongodb&logoColor=white)](https://www.mongodb.com/)
@@ -8,6 +11,9 @@
 [![Vite](https://img.shields.io/badge/Bundler-Vite-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 
 ShopSphere is a full-stack, production-grade MERN luxury e-commerce platform engineered with a minimalist aesthetic, high-performance product browsing, integrated **AI Shopping Concierge**, live order tracking, and seamless **Razorpay** payment gateway integration.
+
+🌐 **Live Storefront**: [https://frontend-liart-eight-37.vercel.app/](https://frontend-liart-eight-37.vercel.app/)  
+⚡ **API Endpoint**: [https://shopsphere-3xp5.onrender.com/](https://shopsphere-3xp5.onrender.com/)
 
 ---
 
