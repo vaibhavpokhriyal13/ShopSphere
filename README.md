@@ -1,4 +1,4 @@
-# 🛍️ ShopSphere — Modern Luxury E-Commerce Platform
+# 🛍️ ShopSphere — Full-Stack E-Commerce Platform
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://frontend-liart-eight-37.vercel.app/)
 [![API Status](https://img.shields.io/badge/Backend_API-Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://shopsphere-3xp5.onrender.com/)
@@ -10,7 +10,7 @@
 [![Google Gemini](https://img.shields.io/badge/AI-Google_Gemini-4285F4?logo=google&logoColor=white)](https://ai.google.dev/)
 [![Vite](https://img.shields.io/badge/Bundler-Vite-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 
-ShopSphere is a full-stack, production-grade MERN luxury e-commerce platform engineered with a minimalist aesthetic, high-performance product browsing, integrated **AI Shopping Concierge**, live order tracking, and seamless **Razorpay** payment gateway integration.
+ShopSphere is a full-stack, production-grade MERN e-commerce platform engineered with a modern aesthetic, high-performance product browsing, integrated **AI Shopping Concierge**, live order tracking, and seamless **Razorpay** payment gateway integration.
 
 🌐 **Live Storefront**: [https://frontend-liart-eight-37.vercel.app/](https://frontend-liart-eight-37.vercel.app/)  
 ⚡ **API Endpoint**: [https://shopsphere-3xp5.onrender.com/](https://shopsphere-3xp5.onrender.com/)
@@ -20,7 +20,7 @@ ShopSphere is a full-stack, production-grade MERN luxury e-commerce platform eng
 ## ✨ Key Features
 
 ### 🛍️ Storefront & Shopping Experience
-- **Curated Luxury Catalog**: Rich product cards with high-resolution imagery, pricing, discounts, and real-time inventory checks.
+- **Curated Product Catalog**: Rich product cards with high-resolution imagery, pricing, discounts, and real-time inventory checks.
 - **Dynamic Filtering & Sorting**: Filter products by Category, Color, Features, and Price ranges with instant reset and sorting by price/popularity.
 - **Expandable Search Experience**: Smooth, non-disruptive expandable search bar with real-time keyword suggestions and recent search history.
 - **Interactive Shopping Bag & Drawer**: Slide-over bag drawer with instant item updates, quantity controls, delivery estimators, and order summary.
